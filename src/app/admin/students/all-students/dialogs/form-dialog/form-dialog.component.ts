@@ -1,0 +1,78 @@
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import {
+  UntypedFormControl,
+  Validators,
+  UntypedFormGroup,
+  UntypedFormBuilder
+} from '@angular/forms';
+import { formatDate } from '@angular/common';
+import { Student } from 'src/app/models/student';
+import { StudentService } from '../../students.service';
+@Component({
+  selector: 'app-form-dialog',
+  templateUrl: './form-dialog.component.html',
+  styleUrls: ['./form-dialog.component.sass']
+})
+export class FormDialogComponent {
+  action: string;
+  dialogTitle: string;
+  stdForm: UntypedFormGroup;
+  student: Student;
+  constructor(
+    public dialogRef: MatDialogRef<FormDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public studentService: StudentService,
+    private fb: UntypedFormBuilder
+  ) {
+    // Set the defaults
+    this.action = data.action;
+    if (this.action === 'edit') {
+      this.dialogTitle = data.students.name;
+      this.student = data.students;
+    } else {
+      this.dialogTitle = 'New Students';
+      this.student = new Student({});
+    }
+    this.stdForm = this.createContactForm();
+  }
+  formControl = new UntypedFormControl('', [
+    Validators.required
+    // Validators.email,
+  ]);
+  getErrorMessage() {
+    return this.formControl.hasError('required')
+      ? 'Required field'
+      : this.formControl.hasError('email')
+      ? 'Not a valid email'
+      : '';
+  }
+  createContactForm(): UntypedFormGroup {
+    return this.fb.group({
+      id: [this.student.id],
+      img: [this.student.photo],
+      name: [this.student.nom],
+      email: [
+        this.student.email,
+        [Validators.required, Validators.email, Validators.minLength(5)]
+      ],
+      // date: [
+      //   formatDate(this.student.date, 'yyyy-MM-dd', 'en'),
+      //   [Validators.required]
+      // ],
+      gender: [this.student.sexe],
+      mobile: [this.student.phoneNumber],
+      // department: [this.student.department],
+      // rollNo: [this.students.rollNo]
+    });
+  }
+  submit() {
+    // emppty stuff
+  }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+  public confirmAdd(): void {
+    this.studentService.addStudent(this.stdForm.getRawValue());
+  }
+}
