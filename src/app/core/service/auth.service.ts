@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/user';
@@ -24,18 +24,34 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
+    username='bgael';
+    password='password';
+    var client_id= 'api-gesetudiant';
+    var client_secret: 'AyiBf4dt937YqW1mpUQ0U4mKqmCFe8Js';
+    //var client_id= 'gesetudiant-angular';
+    //var client_secret: 'ONJbLXHFsS2VitGM9joWomKQNRxFSQQH';
+    var grant_type='password';
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+
+    alert('ccc')
     return this.http
-      .post<any>(`${environment.apiUrl}/authenticate`, {
+      // .post<any>(`${environment.apiUrl}/authenticate`, {
+      .post<any>(`https://signin-dev.godtech.co/realms/oriongroup/protocol/openid-connect/token123`, {
         username,
         password,
-      })
+        client_id,
+        grant_type,
+        client_secret
+      },{headers})//
       .pipe(
         map((user) => {
+          console.log(user)
           // store user details and jwt token in local storage to keep user logged in between page refreshes
-
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
-          console.log('user: ',user)
           return user;
         })
       );

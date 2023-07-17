@@ -49,21 +49,9 @@ export class FormDialogComponent {
   }
   createContactForm(): UntypedFormGroup {
     return this.fb.group({
-      id: [this.departements.id],
-      img: [this.departements.img],
-      name: [this.departements.name],
-      email: [
-        this.departements.email,
-        [Validators.required, Validators.email, Validators.minLength(5)]
-      ],
-      date: [
-        formatDate(this.departements.date, 'yyyy-MM-dd', 'en'),
-        [Validators.required]
-      ],
-      gender: [this.departements.gender],
-      mobile: [this.departements.mobile],
-      departement: [this.departements.departement],
-      rollNo: [this.departements.rollNo]
+      codeDept: [this.departements.codeDept],
+      nom: [this.departements.nom],
+      etablissementId: [this.departements.etablissementId]
     });
   }
   submit() {

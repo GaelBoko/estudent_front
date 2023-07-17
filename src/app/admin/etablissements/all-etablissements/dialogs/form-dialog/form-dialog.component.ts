@@ -34,7 +34,7 @@ export class FormDialogComponent {
       this.dialogTitle = 'New Etablissements';
       this.etablissements = new Etablissements({});
     }
-    this.stdForm = this.createContactForm();
+    this.stdForm = this.createEtablissemntForm();
   }
   formControl = new UntypedFormControl('', [
     Validators.required
@@ -47,23 +47,24 @@ export class FormDialogComponent {
       ? 'Not a valid email'
       : '';
   }
-  createContactForm(): UntypedFormGroup {
+  createEtablissemntForm(): UntypedFormGroup {
     return this.fb.group({
-      id: [this.etablissements.id],
-      img: [this.etablissements.img],
-      name: [this.etablissements.name],
+      codeEts: [this.etablissements.codeEts],
+      nom: [this.etablissements.nom],
+      nomResponsable: [this.etablissements.nomResponsable],
+      telResponsable: [this.etablissements.telResponsable],
+      adresse: [this.etablissements.adresse],
+      telephone: [this.etablissements.telephone],
+      siteweb: [this.etablissements.siteweb],
+      pays: [this.etablissements.pays],
+      ville: [this.etablissements.ville],
+      latitude: [this.etablissements.latitude],
+      longitude: [this.etablissements.longitude],
+      universiteGuid: [this.etablissements.universiteGuid],
       email: [
         this.etablissements.email,
         [Validators.required, Validators.email, Validators.minLength(5)]
-      ],
-      date: [
-        formatDate(this.etablissements.date, 'yyyy-MM-dd', 'en'),
-        [Validators.required]
-      ],
-      gender: [this.etablissements.gender],
-      mobile: [this.etablissements.mobile],
-      etablissement: [this.etablissements.etablissement],
-      rollNo: [this.etablissements.rollNo]
+      ]
     });
   }
   submit() {

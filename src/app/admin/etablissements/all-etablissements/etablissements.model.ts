@@ -1,25 +1,35 @@
 import { formatDate } from '@angular/common';
 export class Etablissements {
-  id: number;
-  img: string;
-  name: string;
+  guid: string;
+  codeEts: string;
+  nom: string;
+  nomResponsable: string;
+  telResponsable: string;
+  adresse: string;
+  telephone: string;
   email: string;
-  date: string;
-  gender: string;
-  mobile: string;
-  etablissement: string;
-  rollNo: string;
+  siteweb: string;
+  pays: string;
+  ville: string;
+  latitude:string;
+  longitude:string;
+  universite:string
+  universiteGuid:string
   constructor(etablissements) {
     {
-      this.id = etablissements.id || this.getRandomID();
-      this.img = etablissements.avatar || 'assets/images/user/user1.jpg';
-      this.name = etablissements.name || '';
+      this.guid = etablissements.guid || this.getRandomID();
+      this.codeEts = etablissements.codeEts || '';
+      this.nom = etablissements.nom || '';
       this.email = etablissements.email || '';
-      this.date = formatDate(new Date(), 'yyyy-MM-dd', 'en') || '';
-      this.gender = etablissements.gender || '';
-      this.mobile = etablissements.mobile || '';
-      this.etablissement = etablissements.etablissement || '';
-      this.rollNo = etablissements.rollNo || '';
+      this.telephone = '';
+      this.adresse = etablissements.adress || '';
+      this.pays = etablissements.pays || '';
+      this.ville = etablissements.ville || '';
+      this.nomResponsable = etablissements.nomResponsable || '';
+      this.telResponsable = etablissements.telResponsable || '';
+      this.longitude = etablissements.nomResponsable || '';
+      this.latitude = etablissements.nomResponsable || '';
+      this.universite = etablissements.nomResponsable || '';
     }
   }
   public getRandomID(): string {

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:4200',
+  apiUrl: 'https://api-dev.godtech.co/gesetudiant/api/v1',
   serveurUrl:"https://mgs.pythonanywhere.com/api/",
 };
 

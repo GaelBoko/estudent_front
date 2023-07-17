@@ -21,6 +21,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ClickOutsideModule } from 'ng-click-outside';
+import { PublicModule } from './public/public.module';
 import {
   HttpClientModule,
   HTTP_INTERCEPTORS,
@@ -45,6 +46,7 @@ export function createTranslateLoader(http: HttpClient): any {
     MainLayoutComponent,
   ],
   imports: [
+    PublicModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

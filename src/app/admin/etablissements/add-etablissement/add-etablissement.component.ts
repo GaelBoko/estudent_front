@@ -20,23 +20,22 @@ export class AddEtablissementComponent {
   ];
   constructor(private fb: UntypedFormBuilder) {
     this.stdForm = this.fb.group({
-      first: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]],
-      last: [''],
-      rollNo: ['', [Validators.required]],
-      gender: ['', [Validators.required]],
+      codeEts: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]],
+      nom: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]],
       email: [
         '',
         [Validators.required, Validators.email, Validators.minLength(5)],
       ],
-      mobile: ['', [Validators.required]],
-      rDate: ['', [Validators.required]],
-      etablissement: [''],
-      parentName: ['', [Validators.required]],
-      parentNo: [''],
-      dob: ['', [Validators.required]],
-      bGroup: [''],
-      address: [''],
-      uploadFile: [''],
+      telephone: ['', [Validators.required]],
+      univerite: [''],
+      pays: ['', [Validators.required]],
+      ville: [''],
+      adresse: [''],
+      longitude: [''],
+      latitude: [''],
+      nomResponsable: [''],
+      telResponsable: [''],
+      universite: [''],
     });
   }
   onSubmit() {

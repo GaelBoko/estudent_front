@@ -28,7 +28,7 @@ export class FormDialogComponent {
     // Set the defaults
     this.action = data.action;
     if (this.action === 'edit') {
-      this.dialogTitle = data.students.name;
+      this.dialogTitle = data.students.nomComplet;
       this.student = data.students;
     } else {
       this.dialogTitle = 'New Students';
@@ -49,19 +49,22 @@ export class FormDialogComponent {
   }
   createContactForm(): UntypedFormGroup {
     return this.fb.group({
-      id: [this.student.id],
+      niu: [this.student.niu],
       img: [this.student.photo],
-      name: [this.student.nom],
+      nom: [this.student.nom],
+      prenom: [this.student.prenom],
       email: [
         this.student.email,
         [Validators.required, Validators.email, Validators.minLength(5)]
       ],
-      // date: [
-      //   formatDate(this.student.date, 'yyyy-MM-dd', 'en'),
-      //   [Validators.required]
-      // ],
-      gender: [this.student.sexe],
-      mobile: [this.student.phoneNumber],
+      // dateNaissance: [
+      //    formatDate(this.student.dateNaissance, 'yyyy-MM-dd', 'en'),
+      //    [Validators.required]
+      //  ],
+      sexe: [this.student.sexe],
+      phoneNumber: [this.student.phoneNumber],
+      department:"Medecine",
+      universiteEtudiantId:1
       // department: [this.student.department],
       // rollNo: [this.students.rollNo]
     });

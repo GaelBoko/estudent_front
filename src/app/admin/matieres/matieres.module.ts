@@ -20,30 +20,30 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { StudentsRoutingModule } from './students-routing.module';
-import { AboutStudentComponent } from './about-student/about-student.component';
-import { AddStudentComponent } from './add-student/add-student.component';
-import { EditStudentComponent } from './edit-student/edit-student.component';
-import { AllStudentsComponent } from './all-students/all-students.component';
-import { DeleteDialogComponent } from './all-students/dialogs/delete/delete.component';
-import { FormDialogComponent } from './all-students/dialogs/form-dialog/form-dialog.component';
-import { StudentsService } from './all-students/students.service';
+import { MatieresRoutingModule } from './matieres-routing.module';
+import { AboutMatiereComponent } from './about-matiere/about-matiere.component';
+import { AddMatiereComponent } from './add-matiere/add-matiere.component';
+import { EditMatiereComponent } from './edit-matieres/edit-matiere.component';
+import { AllMatieresComponent } from './all-matieres/all-matieres.component';
+import { DeleteDialogComponent } from './all-matieres/dialogs/delete/delete.component';
+import { FormDialogComponent } from './all-matieres/dialogs/form-dialog/form-dialog.component';
+import { MatieresService } from './all-matieres/matieres.service';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { StudentAttendanceComponent } from './student-attendance/student-attendance.component';
-import { DeleteDialogComponent as StdDeleteDialogComponent } from './student-attendance/dialogs/delete/delete.component';
-import { FormDialogComponent as StdFormDialogComponent } from './student-attendance/dialogs/form-dialog/form-dialog.component';
-import { StudentAttendanceService } from './student-attendance/attendance.service';
+import { MatiereAttendanceComponent } from './matiere-attendance/matiere-attendance.component';
+import { DeleteDialogComponent as StdDeleteDialogComponent } from './matiere-attendance/dialogs/delete/delete.component';
+import { FormDialogComponent as StdFormDialogComponent } from './matiere-attendance/dialogs/form-dialog/form-dialog.component';
+import { MatiereAttendanceService } from './matiere-attendance/attendance.service';
 
 @NgModule({
   declarations: [
-    AboutStudentComponent,
-    AddStudentComponent,
-    EditStudentComponent,
-    AllStudentsComponent,
+    AboutMatiereComponent,
+    AddMatiereComponent,
+    EditMatiereComponent,
+    AllMatieresComponent,
     DeleteDialogComponent,
     FormDialogComponent,
-    StudentAttendanceComponent,
+    MatiereAttendanceComponent,
     StdDeleteDialogComponent,
     StdFormDialogComponent,
   ],
@@ -68,11 +68,11 @@ import { StudentAttendanceService } from './student-attendance/attendance.servic
     MatMenuModule,
     MatTooltipModule,
     MatTableExporterModule,
-    StudentsRoutingModule,
+    MatieresRoutingModule,
     MatProgressSpinnerModule,
     ComponentsModule,
     SharedModule,
   ],
-  providers: [StudentsService, StudentAttendanceService],
+  providers: [MatieresService, MatiereAttendanceService],
 })
-export class StudentsModule {}
+export class MatieresModule {}

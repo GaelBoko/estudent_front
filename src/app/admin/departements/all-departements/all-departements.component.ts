@@ -25,21 +25,14 @@ export class AllDepartementsComponent
   implements OnInit
 {
   displayedColumns = [
-    'select',
-    'img',
-    'rollNo',
-    'name',
-    'departement',
-    'gender',
-    'mobile',
-    'email',
-    'date',
-    'actions',
+    "codeDept",
+    "nom",
+    "etablissement"
   ];
   exampleDatabase: DepartementsService | null;
   dataSource: ExampleDataSource | null;
   selection = new SelectionModel<Departements>(true, []);
-  id: number;
+  codeDept: string;
   departements: Departements | null;
   breadscrums = [
     {
@@ -101,7 +94,7 @@ export class AllDepartementsComponent
     });
   }
   editCall(row) {
-    this.id = row.id;
+    this.codeDept = row.codeDept;
     let tempDirection;
     if (localStorage.getItem('isRtl') === 'true') {
       tempDirection = 'rtl';
@@ -119,7 +112,7 @@ export class AllDepartementsComponent
       if (result === 1) {
         // When using an edit things are little different, firstly we find record inside DataService by id
         const foundIndex = this.exampleDatabase.dataChange.value.findIndex(
-          (x) => x.id === this.id
+          (x) => x.codeDept === this.codeDept
         );
         // Then you update that record using data from dialogData (values you enetered)
         this.exampleDatabase.dataChange.value[foundIndex] =
@@ -136,7 +129,7 @@ export class AllDepartementsComponent
     });
   }
   deleteItem(row) {
-    this.id = row.id;
+    this.codeDept = row.codeDept;
     let tempDirection;
     if (localStorage.getItem('isRtl') === 'true') {
       tempDirection = 'rtl';
@@ -150,7 +143,7 @@ export class AllDepartementsComponent
     this.subs.sink = dialogRef.afterClosed().subscribe((result) => {
       if (result === 1) {
         const foundIndex = this.exampleDatabase.dataChange.value.findIndex(
-          (x) => x.id === this.id
+          (x) => x.codeDept === this.codeDept
         );
         // for delete we use splice in order to remove single object from DataService
         this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
@@ -270,10 +263,9 @@ export class ExampleDataSource extends DataSource<Departements> {
           .slice()
           .filter((departements: Departements) => {
             const searchStr = (
-              departements.id +
-              departements.name +
-              departements.email +
-              departements.mobile
+              departements.codeDept +
+              departements.nom +
+              departements.etablissement
             ).toLowerCase();
             return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
           });
@@ -299,23 +291,14 @@ export class ExampleDataSource extends DataSource<Departements> {
       let propertyA: number | string = '';
       let propertyB: number | string = '';
       switch (this._sort.active) {
-        case 'id':
-          [propertyA, propertyB] = [a.id, b.id];
+        case 'codeDept':
+          [propertyA, propertyB] = [a.codeDept, b.codeDept];
           break;
-        case 'name':
-          [propertyA, propertyB] = [a.name, b.name];
+        case 'nom':
+          [propertyA, propertyB] = [a.nom, b.nom];
           break;
-        case 'email':
-          [propertyA, propertyB] = [a.email, b.email];
-          break;
-        case 'date':
-          [propertyA, propertyB] = [a.date, b.date];
-          break;
-        case 'time':
-          [propertyA, propertyB] = [a.departement, b.departement];
-          break;
-        case 'mobile':
-          [propertyA, propertyB] = [a.mobile, b.mobile];
+        case 'etablissement':
+          [propertyA, propertyB] = [a.etablissement, b.etablissement];
           break;
       }
       const valueA = isNaN(+propertyA) ? propertyA : +propertyA;

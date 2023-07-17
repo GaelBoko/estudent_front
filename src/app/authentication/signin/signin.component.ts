@@ -55,13 +55,13 @@ export class SigninComponent
     if (this.authForm.invalid) {
       this.error = 'Username and Password not valid !';
       return;
-    } else {
+    } else {alert('ddd')
       this.subs.sink = this.authService
         .login(this.f.username.value, this.f.password.value)
         .subscribe(
           (res) => {
             if (res) {
-              setTimeout(() => {
+              setTimeout(() => {alert('eee')
                 const role = this.authService.currentUserValue.role;
                 if (role === Role.All || role === Role.Admin) {
                   this.router.navigate(['/admin/dashboard/main']);

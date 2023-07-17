@@ -28,7 +28,7 @@ export class AllMatieresComponent
     'select',
     'img',
     'name',
-    'department',
+    'matiere',
     'gender',
     'degree',
     'mobile',
@@ -271,7 +271,7 @@ export class ExampleDataSource extends DataSource<Matieres> {
           .filter((matieres: Matieres) => {
             const searchStr = (
               matieres.name +
-              matieres.department +
+              matieres.matiere +
               matieres.gender +
               matieres.degree +
               matieres.email +
@@ -314,7 +314,7 @@ export class ExampleDataSource extends DataSource<Matieres> {
           [propertyA, propertyB] = [a.date, b.date];
           break;
         case 'time':
-          [propertyA, propertyB] = [a.department, b.department];
+          [propertyA, propertyB] = [a.matiere, b.matiere];
           break;
         case 'mobile':
           [propertyA, propertyB] = [a.mobile, b.mobile];

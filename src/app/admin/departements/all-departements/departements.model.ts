@@ -1,25 +1,14 @@
 import { formatDate } from '@angular/common';
 export class Departements {
-  id: number;
-  img: string;
-  name: string;
-  email: string;
-  date: string;
-  gender: string;
-  mobile: string;
-  departement: string;
-  rollNo: string;
+  "codeDept": string;
+  "nom": string;
+  "etablissementId":number;
+  "etablissement": string;
   constructor(departements) {
     {
-      this.id = departements.id || this.getRandomID();
-      this.img = departements.avatar || 'assets/images/user/user1.jpg';
-      this.name = departements.name || '';
-      this.email = departements.email || '';
-      this.date = formatDate(new Date(), 'yyyy-MM-dd', 'en') || '';
-      this.gender = departements.gender || '';
-      this.mobile = departements.mobile || '';
-      this.departement = departements.departement || '';
-      this.rollNo = departements.rollNo || '';
+      this.codeDept = departements.codeDept || this.getRandomID();
+      this.nom = departements.nom || '';
+      this.etablissement = departements.etablissement || '';
     }
   }
   public getRandomID(): string {

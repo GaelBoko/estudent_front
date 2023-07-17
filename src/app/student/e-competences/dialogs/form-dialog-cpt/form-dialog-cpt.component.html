@@ -1,0 +1,77 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <img src='#' alt="avatar">
+        <div class="modal-about">
+          {{dialogTitle}}
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="dialogRef.close()" class="modal-close-button" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form class="register-form m-4" [formGroup]="stdForm" (ngSubmit)="submit">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label>Titre</mat-label>
+            <input matInput formControlName="titre" required>
+            <mat-icon matSuffix>lib</mat-icon>
+            <mat-error *ngIf="stdForm.get('titre').hasError('required')">
+              Titre is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label>Domaine</mat-label>
+            <input matInput formControlName="domaine" required>
+            <mat-icon matSuffix>id</mat-icon>
+            <mat-error *ngIf="stdForm.get('domaine').hasError('required')">
+              Domaine is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label>HasMore</mat-label>
+            <!-- <input matInput formControlName="hasMore" required> -->
+            <mat-select formControlName="hasMore" required>
+              <mat-option [value]="1">
+                Oui
+              </mat-option>
+              <mat-option [value]="0">
+                Non
+              </mat-option>
+            </mat-select>
+            <!-- <mat-checkbox class="example-margin" formControlName="hasMore">HasMore</mat-checkbox> -->
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" required>
+            <mat-icon matSuffix>details</mat-icon>
+            <mat-error *ngIf="stdForm.get('description').hasError('required')">
+              Description is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" [type]="submit" [disabled]="!stdForm.valid" [mat-dialog-close]="1"
+              (click)="confirmAdd()">Save</button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

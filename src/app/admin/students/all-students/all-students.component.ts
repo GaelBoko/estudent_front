@@ -26,11 +26,11 @@ export class AllStudentsComponent
   displayedColumns = [
     'select',
     'photo',
-    'email',
-    'phoneNumber',
     'niu',
     'nom',
     'prenom',
+    'email',
+    'phoneNumber',
     // 'dateNaissance',
     'sexe',
     // 'addresse',
@@ -44,6 +44,7 @@ export class AllStudentsComponent
   dataSource: ExampleDataSource | null;
   selection = new SelectionModel<Istudent>(true, []);
   id: string;
+  hideId: boolean;
   students: Istudent | null;
   breadscrums = [
     {
@@ -73,6 +74,7 @@ export class AllStudentsComponent
   refresh() {
     this.loadData();
   }
+
   addNew() {
     let tempDirection;
     if (localStorage.getItem('isRtl') === 'true') {
@@ -94,7 +96,8 @@ export class AllStudentsComponent
         this.exampleDatabase.dataChange.value.unshift(
           this.studentsService.getDialogData()
         );
-        this.refreshTable();
+        //this.refreshTable();
+        this.loadData();
         this.showNotification(
           'snackbar-success',
           'Add Record Successfully...!!!',
@@ -104,6 +107,7 @@ export class AllStudentsComponent
       }
     });
   }
+
   editCall(row) {
     this.id = row.id;
     let tempDirection;
@@ -139,6 +143,7 @@ export class AllStudentsComponent
       }
     });
   }
+
   deleteItem(row) {
     this.id = row.id;
     let tempDirection;
@@ -152,12 +157,14 @@ export class AllStudentsComponent
       direction: tempDirection,
     });
     this.subs.sink = dialogRef.afterClosed().subscribe((result) => {
-      if (result === 1) {
+      //if (result === 1) {
+      if (this.id!=null) {
         const foundIndex = this.exampleDatabase.dataChange.value.findIndex(
           (x) => x.id === this.id
         );
         // for delete we use splice in order to remove single object from DataService
         this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
+        this.removeSelectedRows();
         this.refreshTable();
         this.showNotification(
           'snackbar-danger',
@@ -168,9 +175,11 @@ export class AllStudentsComponent
       }
     });
   }
+
   private refreshTable() {
-    this.paginator._changePageSize(this.paginator.pageSize);
+    this.paginator._changePageSize(this.paginator.pageSize+1);
   }
+
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -186,6 +195,7 @@ export class AllStudentsComponent
           this.selection.select(row)
         );
   }
+
   removeSelectedRows() {
     const totalSelect = this.selection.selected.length;
     this.selection.selected.forEach((item) => {
@@ -204,6 +214,7 @@ export class AllStudentsComponent
       'center'
     );
   }
+
   public loadData() {
     this.exampleDatabase = new StudentService(this.httpClient);
     this.dataSource = new ExampleDataSource(
@@ -220,6 +231,7 @@ export class AllStudentsComponent
       }
     );
   }
+
   showNotification(colorName, text, placementFrom, placementAlign) {
     this.snackBar.open(text, '', {
       duration: 2000,
@@ -228,6 +240,7 @@ export class AllStudentsComponent
       panelClass: colorName,
     });
   }
+
   // context menu
   onContextMenu(event: MouseEvent, item: Istudent) {
     event.preventDefault();
@@ -238,6 +251,7 @@ export class AllStudentsComponent
     this.contextMenu.openMenu();
   }
 }
+
 export class ExampleDataSource extends DataSource<Istudent> {
   filterChange = new BehaviorSubject('');
   get filter(): string {
@@ -273,8 +287,9 @@ export class ExampleDataSource extends DataSource<Istudent> {
         this.filteredData = this.exampleDatabase.data
           .slice()
           .filter((students: Istudent) => {
+            //console.log(students);alert(students.nom)
             const searchStr = (
-              students.id +
+              // students.id +
               students.nom +
               students.email +
               students.phoneNumber

@@ -1,0 +1,305 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header" *ngFor="let breadscrum of breadscrums">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="breadscrum.title" [items]="breadscrum.items" [active_item]="breadscrum.active">
+      </app-breadcrumb>
+    </div>
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="header">
+            <h2>
+              <strong>Mes informations</strong>
+            </h2>
+          </div>
+          <div class="body">
+            <mat-horizontal-stepper [linear]="isLinear" #stepper>
+              <mat-step [stepControl]="infoIdentiteForm">
+                <form [formGroup]="infoIdentiteForm">
+                  <ng-template matStepLabel>
+                    <span class="step-title">Mon identité</span>
+                  </ng-template>
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Nom</mat-label>
+                        <input matInput formControlName="nom" required>
+                        <mat-icon matSuffix>face</mat-icon>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Prénome</mat-label>
+                        <input matInput formControlName="prenom" required>
+                        <mat-icon matSuffix>face</mat-icon>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Date de naissance</mat-label>
+                        <input matInput [matDatepicker]="rpicker" formControlName="dateNaissance" required>
+                        <mat-datepicker-toggle matSuffix [for]="rpicker"></mat-datepicker-toggle>
+                        <mat-datepicker #rpicker></mat-datepicker>
+                        <mat-error *ngIf="infoIdentiteForm.get('dateNaissance').hasError('required')">
+                          Please select date de naissance
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Lieu de naissance</mat-label>
+                        <input matInput formControlName="lieuNaissance" required>
+                        <mat-icon matSuffix>city</mat-icon>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Sexe</mat-label>
+                        <mat-select formControlName="sexe">
+                          <mat-option [value]="">
+                            Non défini
+                          </mat-option>
+                          <mat-option [value]="'feminin'">
+                            Feminin
+                          </mat-option>
+                          <mat-option [value]="'masculain'">
+                            Masculain
+                          </mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>gender</mat-icon>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Situation matrimoniale</mat-label>
+                        <mat-select formControlName="etatMatrimonial">
+                          <mat-option [value]="'celibataire' ">
+                            Célibataire
+                          </mat-option>
+                          <mat-option [value]="'marie' ">
+                            Marié(e)
+                          </mat-option>
+                          <mat-option [value]="'divorce' ">
+                            Divorcé
+                          </mat-option>
+                          <mat-option [value]="'separe' ">
+                            Séparé
+                          </mat-option>
+                          <mat-option [value]="'veuf' ">
+                            Veuf/Veuve
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Pièce d'identité</mat-label>
+                        <mat-select formControlName="pieceIdentite">
+                          <mat-option [value]="'cni' ">
+                            CNI
+                          </mat-option>
+                          <mat-option [value]="'passport' ">
+                            Passport
+                          </mat-option>
+                          <mat-option [value]="'divorce' ">
+                            Permis de conduire
+                          </mat-option>
+                          <mat-option [value]="'autre' ">
+                            Autre
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>N° de la pièce</mat-label>
+                        <input matInput formControlName="numeroPasseport">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Date de délivrance</mat-label>
+                        <input matInput [matDatepicker]="dated" formControlName="dateDelivrancePasseport" required>
+                        <mat-datepicker-toggle matSuffix [for]="dated"></mat-datepicker-toggle>
+                        <mat-datepicker #dated></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Date d'expiration</mat-label>
+                        <input matInput [matDatepicker]="datexp" formControlName="dateExpirationPasseport" required>
+                        <mat-datepicker-toggle matSuffix [for]="datexp"></mat-datepicker-toggle>
+                        <mat-datepicker #datexp></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput formControlName="description"></textarea>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div>
+                    <button mat-raised-button matStepperNext color="primary"
+                      [disabled]="!infoIdentiteForm.valid">Next</button>
+                  </div>
+                </form>
+              </mat-step>
+              <mat-step [stepControl]="coordonneesForm">
+                <form [formGroup]="coordonneesForm">
+                  <ng-template matStepLabel><span class="step-title">Mes coordonnées</span></ng-template>
+                  <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Nom d'utilisateur</mat-label>
+                        <input matInput formControlName="login" required>
+                        <mat-icon matSuffix>user</mat-icon>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" required>
+                        <mat-icon matSuffix>email</mat-icon>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Téléphone</mat-label>
+                        <input matInput formControlName="telephone" required>
+                        <mat-icon matSuffix>phone</mat-icon>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Pays</mat-label>
+                        <input matInput formControlName="pays" required>
+                        <mat-icon matSuffix>flag</mat-icon>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Ville</mat-label>
+                        <input matInput formControlName="ville" required>
+                        <mat-icon matSuffix>city</mat-icon>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Quartier</mat-label>
+                        <input matInput formControlName="quartier">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Adresse</mat-label>
+                        <input matInput formControlName="adresse" placeholder="Ex. 1 Main St, New York, NY">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div>
+                    <button mat-raised-button matStepperPrevious color="warn" class="msr-2">Back</button>
+                    <button mat-raised-button matStepperNext color="primary"
+                      [disabled]="!coordonneesForm.valid">Next</button>
+                  </div>
+                </form>
+              </mat-step>
+              <mat-step [stepControl]="autreInfoForm">
+                <ng-template matStepLabel><span class="step-title">Autres info</span></ng-template>
+                <form [formGroup]="autreInfoForm">
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Nom du tuteur</mat-label>
+                        <input matInput formControlName="nomTuteur">
+                        <mat-icon matSuffix>face</mat-icon>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Téléphone du tuteur</mat-label>
+                        <input matInput formControlName="telephoneTuteur">
+                        <mat-icon matSuffix>phone</mat-icon>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Choix d'université</mat-label>
+                        <mat-select formControlName="universite" required>
+                          <mat-option [value]="">
+                            Non défini
+                          </mat-option>
+                          <mat-option [value]="'DSG'">
+                            DSG
+                          </mat-option>
+                          <mat-option [value]="'MNG'">
+                            MNG
+                          </mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>gender</mat-icon>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Choix d'établissement</mat-label>
+                        <mat-select formControlName="etablissement" required>
+                          <mat-option [value]="">
+                            Non défini
+                          </mat-option>
+                          <mat-option [value]="'ENS'">
+                            ENS
+                          </mat-option>
+                          <mat-option [value]="'ENSP'">
+                            ENSP
+                          </mat-option>
+                          <mat-option [value]="'FS'">
+                            Fac des sciences
+                          </mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>gender</mat-icon>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div>
+                    <button mat-raised-button matStepperPrevious color="warn" class="msr-2">Back</button>
+                    <button mat-raised-button matStepperNext color="primary"
+                      [disabled]="!autreInfoForm.valid">Next</button>
+                  </div>
+                </form>
+              </mat-step>
+              <mat-step [stepControl]="autreInfoForm">
+                <ng-template matStepLabel><span class="step-title">Prendre mon inscription</span></ng-template>
+                <div style="margin-top:20px;margin-bottom: 20px;">
+                  <app-e-offre-formation-item></app-e-offre-formation-item>
+                </div>
+                <div>
+                  <button mat-raised-button matStepperPrevious color="warn" class="msr-2">Back</button>
+                  <button mat-raised-button color="primary" (click)="stepper.reset()">Reset</button>
+                </div>
+              </mat-step>
+            </mat-horizontal-stepper>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

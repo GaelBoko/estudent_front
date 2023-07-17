@@ -25,21 +25,20 @@ export class AllEtablissementsComponent
   implements OnInit
 {
   displayedColumns = [
-    'select',
-    'img',
-    'rollNo',
-    'name',
-    'etablissement',
-    'gender',
-    'mobile',
-    'email',
-    'date',
-    'actions',
+  "guid",
+  "codeEts",
+  "nom",
+  "nomResponsable",
+  "telephone",
+  "email",
+  "pays",
+  "ville",
+  "universite"
   ];
   exampleDatabase: EtablissementsService | null;
   dataSource: ExampleDataSource | null;
   selection = new SelectionModel<Etablissements>(true, []);
-  id: number;
+  guid: string;
   etablissements: Etablissements | null;
   breadscrums = [
     {
@@ -101,7 +100,7 @@ export class AllEtablissementsComponent
     });
   }
   editCall(row) {
-    this.id = row.id;
+    this.guid = row.guid;
     let tempDirection;
     if (localStorage.getItem('isRtl') === 'true') {
       tempDirection = 'rtl';
@@ -119,7 +118,7 @@ export class AllEtablissementsComponent
       if (result === 1) {
         // When using an edit things are little different, firstly we find record inside DataService by id
         const foundIndex = this.exampleDatabase.dataChange.value.findIndex(
-          (x) => x.id === this.id
+          (x) => x.guid === this.guid
         );
         // Then you update that record using data from dialogData (values you enetered)
         this.exampleDatabase.dataChange.value[foundIndex] =
@@ -136,7 +135,7 @@ export class AllEtablissementsComponent
     });
   }
   deleteItem(row) {
-    this.id = row.id;
+    this.guid = row.guid;
     let tempDirection;
     if (localStorage.getItem('isRtl') === 'true') {
       tempDirection = 'rtl';
@@ -150,7 +149,7 @@ export class AllEtablissementsComponent
     this.subs.sink = dialogRef.afterClosed().subscribe((result) => {
       if (result === 1) {
         const foundIndex = this.exampleDatabase.dataChange.value.findIndex(
-          (x) => x.id === this.id
+          (x) => x.guid === this.guid
         );
         // for delete we use splice in order to remove single object from DataService
         this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
@@ -270,10 +269,10 @@ export class ExampleDataSource extends DataSource<Etablissements> {
           .slice()
           .filter((etablissements: Etablissements) => {
             const searchStr = (
-              etablissements.id +
-              etablissements.name +
+              etablissements.guid +
+              etablissements.nom +
               etablissements.email +
-              etablissements.mobile
+              etablissements.telephone
             ).toLowerCase();
             return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
           });
@@ -300,22 +299,34 @@ export class ExampleDataSource extends DataSource<Etablissements> {
       let propertyB: number | string = '';
       switch (this._sort.active) {
         case 'id':
-          [propertyA, propertyB] = [a.id, b.id];
+          [propertyA, propertyB] = [a.guid, b.guid];
           break;
         case 'name':
-          [propertyA, propertyB] = [a.name, b.name];
+          [propertyA, propertyB] = [a.nom, b.nom];
           break;
         case 'email':
           [propertyA, propertyB] = [a.email, b.email];
           break;
-        case 'date':
-          [propertyA, propertyB] = [a.date, b.date];
+        case 'telephone':
+          [propertyA, propertyB] = [a.telephone, b.telephone];
           break;
-        case 'time':
-          [propertyA, propertyB] = [a.etablissement, b.etablissement];
+        case 'adresse':
+          [propertyA, propertyB] = [a.adresse, b.adresse];
           break;
-        case 'mobile':
-          [propertyA, propertyB] = [a.mobile, b.mobile];
+        case 'pays':
+          [propertyA, propertyB] = [a.pays, b.pays];
+          break;
+        case 'ville':
+          [propertyA, propertyB] = [a.ville, b.ville];
+          break;
+        case 'nomResponsable':
+          [propertyA, propertyB] = [a.nomResponsable, b.nomResponsable];
+          break;
+        case 'telResponsable':
+          [propertyA, propertyB] = [a.pays, b.telResponsable];
+          break;
+        case 'universite':
+          [propertyA, propertyB] = [a.universite, b.universite];
           break;
       }
       const valueA = isNaN(+propertyA) ? propertyA : +propertyA;

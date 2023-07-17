@@ -1,25 +1,23 @@
 import { formatDate } from '@angular/common';
 export class Universities {
-  id: number;
-  img: string;
-  name: string;
-  email: string;
-  date: string;
-  gender: string;
-  mobile: string;
-  cycle: string;
-  rollNo: string;
+  photo:string;
+  guid:string;
+  code:string;
+  nom:string;
+  telephone:string;
+  email:string;
+  adress:string;
+  siteweb:string;
   constructor(universities) {
     {
-      this.id = universities.id || this.getRandomID();
-      this.img = universities.avatar || 'assets/images/user/user1.jpg';
-      this.name = universities.name || '';
+      this.code = universities.code || this.getRandomID();
+      this.photo = universities.photo || 'assets/images/user/user1.jpg';
+      this.nom = universities.nom || '';
       this.email = universities.email || '';
-      this.date = formatDate(new Date(), 'yyyy-MM-dd', 'en') || '';
-      this.gender = universities.gender || '';
-      this.mobile = universities.mobile || '';
-      this.cycle = universities.cycle || '';
-      this.rollNo = universities.rollNo || '';
+      this.telephone = universities.telephone || '';
+      this.adress = universities.adress || '';
+      this.guid = universities.guid || '';
+      this.siteweb = universities.siteweb || '';
     }
   }
   public getRandomID(): string {

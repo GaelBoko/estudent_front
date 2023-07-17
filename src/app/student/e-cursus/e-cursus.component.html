@@ -1,0 +1,76 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header" *ngFor="let breadscrum of breadscrums">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="breadscrum.title" [items]="breadscrum.items" [active_item]="breadscrum.active">
+      </app-breadcrumb>
+    </div>
+    <div class="row clearfix">
+      <!-- Basic Examples -->
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="header">
+            <div style="flex: 1;">
+              <h2>Cursus
+                <small>Mes diplômes et attestations.</small>
+              </h2>
+            </div>
+            <div style="flex: 1;">
+              <button mat-mini-fab color="primary" matTooltip="ADD" (click)="addNew()">
+                <mat-icon class="col-white">add</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="body">
+            <div class="row clearfix">
+              <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
+                <mat-accordion>
+                  <mat-expansion-panel *ngFor="let c of monCursus" id="cursus-{{c.id}}">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <span>{{c.diplomeObtenu}}</span> <span style="padding-right: 15px ;padding-left: 15px ;"> || </span>  <span>{{c.dateDebut}} - {{c.dateFin}}</span>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="row">
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                        <div class="panel-body">
+                          <div>
+                            <h5>Etablissement</h5>
+                            <p>{{c.etablissement}}</p>
+                          </div>
+                          <div>
+                            <h5>Description</h5>
+                            <p>{{c.description}}</p>
+                          </div>
+                          <div>
+                            <h5>Matière</h5>
+                            <ul>
+                              <li *ngFor="let m of c.matieres">
+                                  <small style="color:orange ;padding-right: 10px;">&star;</small> <span>{{m}}</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="mt-2">
+                          <button (click)="$event.stopPropagation()" (click)="editCall(c)" mat-icon-button aria-label="Example icon-button with a heart icon"
+                            class="btn btn-circle bg-green msr-2">
+                            <mat-icon>edit</mat-icon>
+                          </button>
+                          <button (click)="$event.stopPropagation()" (click)="deleteItem(c)" mat-icon-button aria-label="Example icon-button with a heart icon"
+                            class="btn btn-circle bg-red">
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- #END# Basic Examples -->
+    </div>
+  </div>
+</section>

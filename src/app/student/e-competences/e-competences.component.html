@@ -1,0 +1,46 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header" *ngFor="let breadscrum of breadscrums">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="breadscrum.title" [items]="breadscrum.items" [active_item]="breadscrum.active">
+      </app-breadcrumb>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header" style="display:flex;">
+          <div style="flex: 1;">
+            <h4>Compétences</h4>
+          </div>
+          <div style="flex: 1;">
+            <button mat-mini-fab color="primary" matTooltip="ADD" (click)="addNew()">
+              <mat-icon class="col-white">add</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="body">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10">
+                <ul class="left-timeline">
+                    <!-- <app-e-competence-item *ngFor="let c of competences" [competence]="c"></app-e-competence-item> -->
+                    <li *ngFor="let c of competences">
+                      <time class="left-time" datetime="2017-11-04T03:45"><span>{{c.titre}}</span>
+                        <span><small *ngFor="let i of getRange(c.niveau)" style="color:gold ;">&star; </small></span>
+                      </time>
+                      <div class="left-icon"><img src="assets/images/user/user2.jpg" alt="A">
+                      </div>
+                      <div class="left-label">
+                        <p>{{c.description}}</p>
+                        <h6 style="font-size:small;"><span>Domaine d'activité : </span> {{c.domaine}}</h6>
+                        <a *ngIf="c.hasMore" href="#0" class="cd-read-more">Read more</a>
+                      </div>
+                    </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

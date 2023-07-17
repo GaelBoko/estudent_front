@@ -40,6 +40,34 @@ import { HomeworkService } from './homework/homework.service';
 import { LeaveRequestService as stdLeaveReqService } from './leave-request/leave-request.service';
 import { ComponentsModule } from '../shared/components/components.module';
 import { SharedModule } from '../shared/shared.module';
+import { InfoPersonnelleComponent } from './info-personnelle/info-personnelle.component';
+import { ECoordonneesComponent } from './e-coordonnees/e-coordonnees.component';
+import { ECursusComponent } from './e-cursus/e-cursus.component';
+import { ECursusItemComponent } from './e-cursus-item/e-cursus-item.component';
+import { EOffreFormationsComponent } from './e-offre-formations/e-offre-formations.component';
+import { EOffreFormationItemComponent } from './e-offre-formation-item/e-offre-formation-item.component';
+import { EFormationEncoursComponent } from './e-formation-encours/e-formation-encours.component';
+import { EEmploiTempsComponent } from './e-emploi-temps/e-emploi-temps.component';
+import { EDevoirsComponent } from './e-devoirs/e-devoirs.component';
+import { EDevoirItemComponent } from './e-devoir-item/e-devoir-item.component';
+import { ECompetencesComponent } from './e-competences/e-competences.component';
+import { ECompetenceItemComponent } from './e-competence-item/e-competence-item.component';
+import { EExperiencesComponent } from './e-experiences/e-experiences.component';
+import { EExperienItemComponent } from './e-experien-item/e-experien-item.component';
+import { ECvComponent } from './e-cv/e-cv.component';
+import { EExperien2ItemComponent } from './e-experien2-item/e-experien2-item.component';
+import { ECompetence2ItemComponent } from './e-competence2-item/e-competence2-item.component';
+import { DeleteCptComponent } from './e-competences/dialogs/delete-cpt/delete-cpt.component';
+import { FormDialogCptComponent } from './e-competences/dialogs/form-dialog-cpt/form-dialog-cpt.component';
+import { DeleteExpComponent } from './e-experiences/dialogs/delete-exp/delete-exp.component';
+import { FormDialogExpComponent } from './e-experiences/dialogs/form-dialog-exp/form-dialog-exp.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { FormDialogCurComponent } from './e-cursus/dialogs/form-dialog-cur/form-dialog-cur.component';
+import { DeleteCurComponent } from './e-cursus/dialogs/delete-cur/delete-cur.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { EProfilComponent } from './e-profil/e-profil.component';
+import { EFormationDetailsComponent } from './e-formation-details/e-formation-details.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +78,33 @@ import { SharedModule } from '../shared/shared.module';
     FormDialogComponent,
     TimetableComponent,
     SettingsComponent,
+    InfoPersonnelleComponent,
+    ECoordonneesComponent,
+    ECursusComponent,
+    ECursusItemComponent,
+    EOffreFormationsComponent,
+    EOffreFormationItemComponent,
+    EFormationEncoursComponent,
+    EEmploiTempsComponent,
+    EDevoirsComponent,
+    EDevoirItemComponent,
+    ECompetencesComponent,
+    ECompetenceItemComponent,
+    EExperiencesComponent,
+    EExperienItemComponent,
+    ECvComponent,
+    EExperien2ItemComponent,
+    ECompetence2ItemComponent,
+    DeleteCptComponent,
+    FormDialogComponent,
+    FormDialogCptComponent,
+    DeleteExpComponent,
+    FormDialogExpComponent,
+    DeleteExpComponent,
+    FormDialogCurComponent,
+    DeleteCurComponent,
+    EProfilComponent,
+    EFormationDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -84,6 +139,9 @@ import { SharedModule } from '../shared/shared.module';
     MatProgressSpinnerModule,
     ComponentsModule,
     SharedModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatStepperModule
   ],
   providers: [HomeworkService, stdLeaveReqService],
 })

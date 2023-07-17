@@ -3,11 +3,14 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/UnsubscribeOnDestroyAdapter';
 import { Istudent } from 'src/app/models/Istudent';
+import { pstudent } from 'src/app/models/pstudent';
+import { environment } from 'src/environments/environment';
+
 @Injectable()
 export class StudentService extends UnsubscribeOnDestroyAdapter {
   // private readonly API_URL = 'assets/data/Student1.json';
   // private readonly API_URL = 'http://estudent-001-site1.etempurl.com/api/Etudiants';
-  private readonly API_URL = 'https://localhost:44374/api/Etudiants';
+  private readonly API_URL = environment.apiUrl + 'api/Etudiants/';
   isTblLoading = true;
   dataChange: BehaviorSubject<Istudent[]> = new BehaviorSubject<Istudent[]>([]);
   // Temporarily stores data from dialogs
@@ -19,6 +22,8 @@ export class StudentService extends UnsubscribeOnDestroyAdapter {
     return this.dataChange.value;
   }
   getDialogData() {
+    alert(this.dialogData)
+    console.log(this.dialogData)
     return this.dialogData;
   }
   /** CRUD METHODS */
@@ -35,11 +40,9 @@ export class StudentService extends UnsubscribeOnDestroyAdapter {
       }
     );
   }
-  addStudent(Student: Istudent): void {
-    this.dialogData = Student;
-
+  addStudent(Student: pstudent): void {
     this.httpClient.post(this.API_URL, Student).subscribe(data => {
-      this.dialogData = Student;
+      this.dialogData = data;
       },
       (err: HttpErrorResponse) => {
      // error code here
@@ -57,10 +60,8 @@ export class StudentService extends UnsubscribeOnDestroyAdapter {
   );
   }
   deleteStudent(id: number): void {
-    console.log(id);
-
     this.httpClient.delete(this.API_URL + id).subscribe(data => {
-      console.log(id);
+      this.dialogData = data;
       },
       (err: HttpErrorResponse) => {
          // error code here

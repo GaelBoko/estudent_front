@@ -1,0 +1,69 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header" *ngFor="let breadscrum of breadscrums">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="breadscrum.title" [items]="breadscrum.items" [active_item]="breadscrum.active">
+      </app-breadcrumb>
+    </div>
+    <p></p>
+    <div class="row clearfix">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="header">
+            <h2>Add Departement</h2>
+
+          </div>
+          <div class="body">
+            <form class="m-4" [formGroup]="stdForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Code</mat-label>
+                    <input matInput formControlName="codeDept" required>
+                    <mat-error *ngIf="stdForm.get('codeDept').hasError('required')">
+                      Code is required
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Nom</mat-label>
+                    <input matInput formControlName="nom" required>
+                    <mat-error *ngIf="stdForm.get('nom').hasError('required')">
+                      Nom is required
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Select etablissment</mat-label>
+                    <mat-select formControlName="etablissementId" required>
+                      <mat-option [value]="1">
+                        ENS
+                      </mat-option>
+                      <mat-option [value]="2">
+                        ENSP
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="stdForm.get('etablissementId').hasError('required')">
+                      Select Any Etablissement
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <button class="btn-space" [disabled]="!stdForm.valid " mat-raised-button
+                    color="primary">Submit</button>
+                  <button type="button" mat-raised-button color="warn">Cancel</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -45,7 +45,7 @@ export class EtablissementsService extends UnsubscribeOnDestroyAdapter {
   updateEtablissements(etablissements: Etablissements): void {
     this.dialogData = etablissements;
 
-     this.httpClient.put(this.API_URL + etablissements.id, etablissements).subscribe(data => {
+     this.httpClient.put(this.API_URL + etablissements.guid, etablissements).subscribe(data => {
       this.dialogData = etablissements;
     },
     (err: HttpErrorResponse) => {

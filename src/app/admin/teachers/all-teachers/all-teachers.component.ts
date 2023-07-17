@@ -14,6 +14,7 @@ import { DeleteDialogComponent } from './dialogs/delete/delete.component';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { SelectionModel } from '@angular/cdk/collections';
 import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/UnsubscribeOnDestroyAdapter';
+import { FormDialogCptComponent } from 'src/app/student/e-competences/dialogs/form-dialog-cpt/form-dialog-cpt.component';
 
 @Component({
   selector: 'app-all-teachers',
@@ -76,7 +77,7 @@ export class AllTeachersComponent
     } else {
       tempDirection = 'ltr';
     }
-    const dialogRef = this.dialog.open(FormDialogComponent, {
+    const dialogRef = this.dialog.open(FormDialogCptComponent, {
       data: {
         teachers: this.teachers,
         action: 'add',

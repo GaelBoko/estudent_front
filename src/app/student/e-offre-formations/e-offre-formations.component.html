@@ -1,0 +1,63 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header" *ngFor="let breadscrum of breadscrums">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="breadscrum.title" [items]="breadscrum.items" [active_item]="breadscrum.active">
+      </app-breadcrumb>
+    </div>
+    <div class="row clearfix">
+      <!-- Basic Examples -->
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card1">
+          <div class="header1">
+            <h4>
+              Offres des formations de l'université <span style="background-color:red ;">Nom université</span>
+            </h4>
+            <h5><blockquote>Trouvez une formation qui vous correspond ici.</blockquote></h5>
+          </div>
+          <div class="body">
+            <div class="row clearfix">
+              <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
+                <mat-accordion>
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Q1. Anim pariatur cliche reprehenderit?
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="row">
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                        <div class="panel-body">
+                          Anim pariatur cliche reprehenderit, enim eiusmod high life
+                          accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                          non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+                          laborum
+                          eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
+                          squid
+                          single origin coffee nulla assumenda shoreditchet. Nihil anim
+                          keffiyeh
+                          helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                          proident.
+                          Ad vegan excepteur butcher vice lomo. Nihil anim keffiyeh
+                          helvetica,
+                          craft beer labore wes anderson cred nesciunt sapiente.
+                        </div>
+                        <div class="mt-2">
+                          <button mat-raised-button class="bg-green text-white"
+                              (click)="showNotification('snackbar-success','You have new Massage...!!!','top','Right')">
+                              S'inscrire
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- #END# Basic Examples -->
+    </div>
+  </div>
+</section>

@@ -17,20 +17,20 @@
       <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width mb-3" appearance="outline">
-            <mat-label>Roll No</mat-label>
-            <input matInput formControlName="rollNo" required>
-            <mat-icon matSuffix>school</mat-icon>
-            <mat-error *ngIf="stdForm.get('rollNo').hasError('required')">
-              Department is required
+            <mat-label>Prénom</mat-label>
+            <input matInput formControlName="prenom" required>
+            <mat-icon matSuffix>face</mat-icon>
+            <mat-error *ngIf="stdForm.get('prenom').hasError('required')">
+              Name is required
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width mb-3" appearance="outline">
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name" required>
+            <mat-label>Nom</mat-label>
+            <input matInput formControlName="nom" required>
             <mat-icon matSuffix>face</mat-icon>
-            <mat-error *ngIf="stdForm.get('name').hasError('required')">
+            <mat-error *ngIf="stdForm.get('nom').hasError('required')">
               Name is required
             </mat-error>
           </mat-form-field>
@@ -38,7 +38,7 @@
       </div>
       <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-          <mat-form-field class="example-full-width mb-3" appearance="outline">
+          <!-- <mat-form-field class="example-full-width mb-3" appearance="outline">
             <mat-label>Select Department</mat-label>
             <mat-select formControlName="department" required>
               <mat-option [value]="'mechanical'">
@@ -60,23 +60,23 @@
             <mat-error *ngIf="stdForm.get('department').hasError('required')">
               Select Any Department
             </mat-error>
-          </mat-form-field>
+          </mat-form-field> -->
         </div>
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width mb-3" appearance="outline">
-            <mat-label>Gender</mat-label>
-            <mat-select formControlName="gender" required>
-              <mat-option [value]="'male'">
-                Male
+            <mat-label>Sexe</mat-label>
+            <mat-select formControlName="sexe" required>
+              <mat-option [value]="1">
+                Homme
               </mat-option>
-              <mat-option [value]="'female'">
-                Female
+              <mat-option [value]="2">
+                Femme
               </mat-option>
-              <mat-option [value]="'other'">
-                Other
+              <mat-option [value]="0">
+                Autre
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="stdForm.get('gender').hasError('required')">
+            <mat-error *ngIf="stdForm.get('sexe').hasError('required')">
               Gender is required
             </mat-error>
           </mat-form-field>
@@ -85,10 +85,10 @@
       <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width mb-3" appearance="outline">
-            <mat-label>Mobile</mat-label>
-            <input matInput formControlName="mobile" type="number">
+            <mat-label>Téléphone</mat-label>
+            <input matInput formControlName="phoneNumber" type="number">
             <mat-icon matSuffix>phone</mat-icon>
-            <mat-error *ngIf="stdForm.get('mobile').hasError('required')">
+            <mat-error *ngIf="stdForm.get('phoneNumber').hasError('required')">
               Mobile is required
             </mat-error>
           </mat-form-field>
@@ -107,15 +107,41 @@
       <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
           <mat-form-field class="example-full-width mb-3" appearance="outline">
-            <mat-label>Joining date</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="stdForm.get('date').hasError('required')">
-              Please select date
+            <mat-label>Niu</mat-label>
+            <input matInput formControlName="niu" required>
+            <mat-icon matSuffix>Id</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label>Université</mat-label>
+            <mat-select formControlName="universiteEtudiantId" required>
+              <mat-option [value]="1">
+                Marien Ngouabi
+              </mat-option>
+              <mat-option [value]="2">
+                DSN
+              </mat-option>
+              <mat-option [value]="3">
+                Makani
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="stdForm.get('universiteEtudiantId').hasError('required')">
+              Gender is required
             </mat-error>
           </mat-form-field>
         </div>
+        <!-- <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label>Date naiss</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateNaissance">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="stdForm.get('dateNaissance').hasError('required')">
+              Please select date
+            </mat-error>
+          </mat-form-field>
+        </div> -->
       </div>
       <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">

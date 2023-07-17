@@ -1,11 +1,15 @@
 import { Page404Component } from './authentication/page404/page404.component';
 import { AuthLayoutComponent } from './layout/app-layout/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './layout/app-layout/main-layout/main-layout.component';
+import { PLayoutComponent } from './public/p-layout/p-layout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/guard/auth.guard';
 import { Role } from './core/models/role';
 const routes: Routes = [
+/*   {
+    path: '',component:PLayoutComponent
+  }, */
   {
     path: '',
     component: MainLayoutComponent,

@@ -1,6 +1,8 @@
-export class Student {
-    id: string;
-    userName: string;
+import { Role } from "../core/models/role";
+import { User } from "../core/models/user";
+
+export class Student implements User {
+    login: string;
     email: string;
     emailConfirmed: true;
     phoneNumber: string;
@@ -23,11 +25,28 @@ export class Student {
     photo: string;
     nomPrenomTuteur: string;
     telephoneTuteur: string;
-    universiteEtudiantId: 0;
-    universiteEtudiant: {};
+    apropos: string;
+    universiteId: 0;
+    universite: {};
+    departementId: 0;
+    departement: {};
     bourseId: 0;
     bourse: {};
+    experiences: [];
+    competences: [];
     inscriptions: [];
+    certifications: [];
+    adresse: {
+      adresse: string,
+      codePostal: string,
+      pays: string,
+      ville: string,
+      quartier: string,
+      telephone: string,
+      isPhoneVerified: true,
+      email: string,
+      isEmailVerified: true
+    };
 
     constructor(students) {
       {
@@ -38,4 +57,12 @@ export class Student {
         this.phoneNumber = students.phoneNumber || '';
       }
     }
-  }
+  id: number;
+  img: string;
+  username: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  role: Role;
+  token?: string;
+}

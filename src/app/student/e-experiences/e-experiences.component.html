@@ -1,0 +1,63 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header" *ngFor="let breadscrum of breadscrums">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="breadscrum.title" [items]="breadscrum.items" [active_item]="breadscrum.active">
+      </app-breadcrumb>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="header" style="display:flex;">
+          <div style="flex: 1;">
+            <h4>Expériences professionnelles</h4>
+          </div>
+          <div style="flex: 1;">
+            <button mat-mini-fab color="primary" matTooltip="ADD" (click)="addNew()">
+              <mat-icon class="col-white">add</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="body">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10">
+                <ul class="left-timeline">
+                    <!-- <app-e-experience-item *ngFor="let c of experiences" [experience]="c"></app-e-experience-item> -->
+                    <li *ngFor="let c of experiences">
+                      <time class="left-time" datetime="2017-11-04T03:45"><span>{{c.periodeDebut}}-{{c.periodeFin}}</span>
+                        <span><small style="color:blue ;">{{c.domaineActivite}}</small></span>
+                      </time>
+                      <div class="left-icon"><img src="assets/images/user/user2.jpg" alt="A">
+                      </div>
+                      <div class="left-label">
+                        <h2>
+                          <a href="#" onClick="return false;">{{c.role}}</a> &emsp;/ <span style="font-weight:bold ;">{{c.entreprise}}</span>
+                        </h2>
+                        <h6>{{c.titreProjet}}</h6>
+                        <div>
+                          <a href="#" onClick="return false;">Context</a>
+                          <p>{{c.descriptionProjet}}</p>
+                        </div>
+                        <div>
+                          <a href="#" onClick="return false;">Missions</a>
+                          <p>{{c.missions}}</p>
+                        </div>
+                        <div>
+                          <a href="#" onClick="return false;">Compétences/Outils</a>
+                          <ol>
+                            <li *ngFor="let cp of c.competences">
+                               - {{cp}}
+                            </li>
+                          </ol>
+                        </div>
+                      </div>
+                    </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

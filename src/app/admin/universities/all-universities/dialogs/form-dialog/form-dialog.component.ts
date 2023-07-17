@@ -34,7 +34,7 @@ export class FormDialogComponent {
       this.dialogTitle = 'New Universities';
       this.universities = new Universities({});
     }
-    this.stdForm = this.createContactForm();
+    this.stdForm = this.createUniversiteForm();
   }
   formControl = new UntypedFormControl('', [
     Validators.required
@@ -47,23 +47,17 @@ export class FormDialogComponent {
       ? 'Not a valid email'
       : '';
   }
-  createContactForm(): UntypedFormGroup {
+  createUniversiteForm(): UntypedFormGroup {
     return this.fb.group({
-      id: [this.universities.id],
-      img: [this.universities.img],
-      name: [this.universities.name],
+      guid: [this.universities.guid],
+      photo: [this.universities.photo],
+      nom: [this.universities.nom],
       email: [
         this.universities.email,
         [Validators.required, Validators.email, Validators.minLength(5)]
       ],
-      date: [
-        formatDate(this.universities.date, 'yyyy-MM-dd', 'en'),
-        [Validators.required]
-      ],
-      gender: [this.universities.gender],
-      mobile: [this.universities.mobile],
-      department: [this.universities.cycle],
-      rollNo: [this.universities.rollNo]
+      telephone: [this.universities.telephone],
+      adress: [this.universities.adress]
     });
   }
   submit() {
